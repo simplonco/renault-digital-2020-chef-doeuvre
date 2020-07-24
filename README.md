@@ -6,11 +6,16 @@ Un application de partage de synthétiseurs.
 
 ## Installation
 
-Choose either "client-angular" or "client-react", start the server (see below) and go to http://127.0.0.1:3000
+Choose either "client-angular", "client-react" or "client-vue", start the server (see below) and go to http://127.0.0.1:3000
 
 ```
 npm install
+
+# Angular or React
 npm start
+
+# Vue
+npm run serve
 ```
 
 ## Start an Angular app
@@ -27,6 +32,14 @@ Install `npm`, then:
 
 ```
 npx create-react-app client-react
+```
+
+## Start a Vue app
+
+Install `npm` and `vue`, then:
+
+```
+vue create client-vue
 ```
 
 ## Add bootstrap
