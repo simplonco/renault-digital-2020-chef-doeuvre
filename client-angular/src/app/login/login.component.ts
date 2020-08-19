@@ -21,7 +21,19 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-
+    this.http
+      .post("http://127.0.0.1:8080/login", {
+        "username": this.model.username,
+        "password": this.model.password,
+      })
+      .subscribe(() => {
+          let base64hash = btoa(this.model.username + ':' + this.model.password);
+          sessionStorage.setItem('token', base64hash);
+          this.router.navigate(["/synths"])
+        },
+        error => {
+          alert(`Login failed: ${error}`)
+        })
   }
 
 }

@@ -27,10 +27,10 @@ export class RegisterComponent implements OnInit {
         "password": this.model.password,
       })
       .subscribe(() => {
-          alert("ok")
+          this.router.navigate(["/login"])
         },
         error => {
-          alert("ko")
+          alert(`Register failed: ${error}`)
         })
   }
 
