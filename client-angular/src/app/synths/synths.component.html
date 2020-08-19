@@ -2,8 +2,26 @@
   <div class="card">
     <div class="card-body">
       <h2>Synths</h2>
-      <p>TODO show synths if logged in</p>
-      <p>{{synths}}</p>
+      <table class="table">
+        <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Brand</th>
+          <th scope="col">Name</th>
+          <th scope="col">Creation Year</th>
+          <th scope="col">Created By Username</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let synth of synths">
+          <th scope="row">{{ synth.id }}</th>
+          <td>{{ synth.brand }}</td>
+          <td>{{ synth.name }}</td>
+          <td>{{ synth.creationYear }}</td>
+          <td>{{ synth.createdByUsername }}</td>
+        </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

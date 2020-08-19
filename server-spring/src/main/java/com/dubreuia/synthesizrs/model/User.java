@@ -6,6 +6,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import java.util.List;
 
 @Entity(name = "users")
@@ -26,6 +28,9 @@ public class User {
             joinColumns = @JoinColumn(name = "user_username"),
             inverseJoinColumns = @JoinColumn(name = "role_name"))
     private List<Role> roles;
+
+    @OneToMany(mappedBy = "createdBy")
+    private List<Synthesizer> createdSynthesizers;
 
     public User() {
     }
@@ -67,6 +72,14 @@ public class User {
 
     public void setRoles(List<Role> roles) {
         this.roles = roles;
+    }
+
+    public List<Synthesizer> getCreatedSynthesizers() {
+        return createdSynthesizers;
+    }
+
+    public void setCreatedSynthesizers(List<Synthesizer> createdSynthesizers) {
+        this.createdSynthesizers = createdSynthesizers;
     }
 
     @Override

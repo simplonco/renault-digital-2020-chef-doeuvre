@@ -1,8 +1,10 @@
 package com.dubreuia.synthesizrs.services;
 
 import com.dubreuia.synthesizrs.model.Role;
+import com.dubreuia.synthesizrs.model.Synthesizer;
 import com.dubreuia.synthesizrs.model.User;
 import com.dubreuia.synthesizrs.repositories.RoleRepository;
+import com.dubreuia.synthesizrs.repositories.SynthesizerRepository;
 import com.dubreuia.synthesizrs.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -20,6 +22,9 @@ public class ApplicationServiceImpl implements ApplicationService {
     private UserRepository userRepository;
 
     @Autowired
+    private SynthesizerRepository synthesizerRepository;
+
+    @Autowired
     private PasswordEncoder passwordEncoder;
 
     @Override
@@ -32,6 +37,9 @@ public class ApplicationServiceImpl implements ApplicationService {
 
         User adminUser = new User("admin", passwordEncoder.encode("supermotdepasse1!"), true, admin);
         userRepository.save(adminUser);
+
+        synthesizerRepository.save(new Synthesizer("Juno-106", "Roland", "1984", adminUser));
+        synthesizerRepository.save(new Synthesizer("Synthesizer 1c/2c/3c", "Moog", "1964", adminUser));
     }
 
 }
