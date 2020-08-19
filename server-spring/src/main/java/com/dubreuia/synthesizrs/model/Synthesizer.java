@@ -25,6 +25,9 @@ public class Synthesizer {
     @Column
     private String creationYear;
 
+    @Column
+    private String filename;
+
     @ManyToOne
     @JoinColumn(name = "created_by")
     private User createdBy;
@@ -32,11 +35,12 @@ public class Synthesizer {
     public Synthesizer() {
     }
 
-    public Synthesizer(String brand, String name, String creationYear, User createdBy) {
+    public Synthesizer(String brand, String name, String creationYear, User createdBy, String filename) {
         this.brand = brand;
         this.name = name;
         this.creationYear = creationYear;
         this.createdBy = createdBy;
+        this.filename = filename;
     }
 
     public long getId() {
@@ -77,6 +81,14 @@ public class Synthesizer {
 
     public void setCreatedBy(User createdBy) {
         this.createdBy = createdBy;
+    }
+
+    public String getFilename() {
+        return filename;
+    }
+
+    public void setFilename(String filename) {
+        this.filename = filename;
     }
 
     @Override

@@ -10,6 +10,7 @@
           <th scope="col">Name</th>
           <th scope="col">Creation Year</th>
           <th scope="col">Created By Username</th>
+          <th scope="col">Image</th>
         </tr>
         </thead>
         <tbody>
@@ -19,6 +20,17 @@
           <td>{{ synth.name }}</td>
           <td>{{ synth.creationYear }}</td>
           <td>{{ synth.createdByUsername }}</td>
+          <td>
+            <img *ngIf="synth.filename" src="http://127.0.0.1:8080/{{ synth.filename }}" style="width: 250px"/>
+            <form [formGroup]="uploadForm" (ngSubmit)="onSubmit($event)">
+              <div>
+                <input type="file" name="profile" (change)="onFileSelect($event)" data-id="{{ synth.id }}" />
+              </div>
+              <div>
+                <button type="submit" class="btn btn-primary">Upload</button>
+              </div>
+            </form>
+          </td>
         </tr>
         </tbody>
       </table>

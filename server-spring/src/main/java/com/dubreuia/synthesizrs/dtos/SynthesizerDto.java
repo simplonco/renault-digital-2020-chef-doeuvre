@@ -14,6 +14,8 @@ public class SynthesizerDto {
 
     private String createdByUsername;
 
+    private String filename;
+
     public SynthesizerDto() {
     }
 
@@ -23,6 +25,7 @@ public class SynthesizerDto {
         this.brand = synthesizer.getBrand();
         this.creationYear = synthesizer.getCreationYear();
         this.createdByUsername = synthesizer.getCreatedBy().getUsername();
+        this.filename = synthesizer.getFilename();
     }
 
     public long getId() {
@@ -64,4 +67,17 @@ public class SynthesizerDto {
     public void setCreatedByUsername(String createdByUsername) {
         this.createdByUsername = createdByUsername;
     }
+
+    public String getFilename() {
+        return filename;
+    }
+
+    public void setFilename(String filename) {
+        this.filename = filename;
+    }
+
+    public Synthesizer toSynthesizer() {
+        return new Synthesizer(this.brand, this.name, this.creationYear, null, this.filename);
+    }
+
 }
