@@ -38,8 +38,8 @@ public class ApplicationServiceImpl implements ApplicationService {
         User adminUser = new User("admin", passwordEncoder.encode("supermotdepasse1!"), true, admin);
         userRepository.save(adminUser);
 
-        synthesizerRepository.save(new Synthesizer("Juno-106", "Roland", "1984", adminUser, "1984-JUNO-106.jpeg"));
-        synthesizerRepository.save(new Synthesizer("Synthesizer 1c/2c/3c", "Moog", "1964", adminUser, null));
+        synthesizerRepository.save(new Synthesizer("Roland", "Juno-106", "1984", adminUser, "1984-JUNO-106.jpeg"));
+        synthesizerRepository.save(new Synthesizer("Moog", "Synthesizer 1c/2c/3c", "1964", adminUser, null));
     }
 
 }

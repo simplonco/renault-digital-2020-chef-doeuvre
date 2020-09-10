@@ -10,6 +10,7 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 })
 export class SynthsComponent implements OnInit {
 
+  model: any;
   synths: any;
   uploadForm: FormGroup;
 
@@ -19,6 +20,9 @@ export class SynthsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // Initialise le modele pour le from
+    this.model = {};
+
     // Initialise le composant synth
     this.http
       .get("http://127.0.0.1:8080/api/synths", SynthsComponent.getAuthenticatedHttpOptions())
@@ -30,6 +34,22 @@ export class SynthsComponent implements OnInit {
     this.uploadForm = this.formBuilder.group({profile: ['']});
   }
 
+  // Formulaire synth submit
+  synth() {
+    console.log(this.model.brand)
+    this.http
+      .post("http://127.0.0.1:8080/api/synths", {
+        "brand": this.model.brand,
+        "name": this.model.name,
+        "creationYear": this.model.creationYear,
+      }, SynthsComponent.getAuthenticatedHttpOptions())
+      .subscribe(
+        () => this.ngOnInit(),
+        error => alert(`Error: ${error}`)
+      );
+  }
+
+  // Nouvelle image selectionne
   onFileSelect(event) {
     // Mettre le contenu de l'image dans le composant
     // "uploadForm" (pour afficher le nom du fichier
